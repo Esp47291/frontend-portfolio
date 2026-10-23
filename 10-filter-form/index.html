@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Интерьер. — Каталог</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Панель над каталогом: хлебные крошки + фильтрация + сортировка -->
+  <section class="toolbar">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="#">Главная</a>
+      <span class="breadcrumbs__sep">/</span>
+      <span>Каталог товаров</span>
+    </nav>
+
+    <div class="toolbar__controls">
+      <!-- .filter — position: relative, форма внутри — position: absolute -->
+      <div class="filter" id="filter">
+        <button class="filter__btn" type="button" aria-expanded="true" aria-controls="filter-form">Фильтрация</button>
+
+        <form class="filter-form" id="filter-form" action="" method="GET">
+          <div class="filter-form__content">
+
+            <div class="filter-form__col">
+              <fieldset class="filter-form__group">
+                <legend>Сроки доставки</legend>
+                <div class="option">
+                  <input type="radio" name="delivery" id="delivery-any" value="any" checked>
+                  <label for="delivery-any">Неважно</label>
+                </div>
+                <div class="option">
+                  <input type="radio" name="delivery" id="delivery-today" value="today">
+                  <label for="delivery-today">Сегодня</label>
+                </div>
+                <div class="option">
+                  <input type="radio" name="delivery" id="delivery-tomorrow" value="tomorrow">
+                  <label for="delivery-tomorrow">Завтра</label>
+                </div>
+                <div class="option">
+                  <input type="radio" name="delivery" id="delivery-3" value="3days">
+                  <label for="delivery-3">До 3 дней</label>
+                </div>
+                <div class="option">
+                  <input type="radio" name="delivery" id="delivery-7" value="7days">
+                  <label for="delivery-7">До 7 дней</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-form__group">
+                <legend>Цена</legend>
+                <p class="price-label">
+                  от <output id="price-min-out">0</output> руб.
+                  <span class="price-label__gap">до</span> <output id="price-max-out">100000</output> руб.
+                </p>
+                <div class="range">
+                  <div class="range__track"></div>
+                  <div class="range__fill" id="range-fill"></div>
+                  <input class="range__input" type="range" name="price-min" id="price-min"
+                         min="0" max="100000" step="1000" value="0" aria-label="Минимальная цена">
+                  <input class="range__input" type="range" name="price-max" id="price-max"
+                         min="0" max="100000" step="1000" value="100000" aria-label="Максимальная цена">
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-form__group">
+                <legend>Цвет</legend>
+                <div class="colors">
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-white" value="white">
+                    <label class="color color--white" for="color-white"><span class="visually-hidden">белый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-black" value="black">
+                    <label class="color color--black" for="color-black"><span class="visually-hidden">черный</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-gray" value="gray">
+                    <label class="color color--gray" for="color-gray"><span class="visually-hidden">серый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-red" value="red">
+                    <label class="color color--red" for="color-red"><span class="visually-hidden">красный</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-orange" value="orange" checked>
+                    <label class="color color--orange" for="color-orange"><span class="visually-hidden">оранжевый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-yellow" value="yellow" checked>
+                    <label class="color color--yellow" for="color-yellow"><span class="visually-hidden">желтый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-green" value="green">
+                    <label class="color color--green" for="color-green"><span class="visually-hidden">зеленый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-lightblue" value="lightblue">
+                    <label class="color color--lightblue" for="color-lightblue"><span class="visually-hidden">голубой</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-blue" value="blue">
+                    <label class="color color--blue" for="color-blue"><span class="visually-hidden">синий</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-purple" value="purple" checked>
+                    <label class="color color--purple" for="color-purple"><span class="visually-hidden">фиолетовый</span></label>
+                  </div>
+                  <div class="option option--color">
+                    <input type="checkbox" name="color" id="color-pink" value="pink">
+                    <label class="color color--pink" for="color-pink"><span class="visually-hidden">розовый</span></label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="filter-form__col">
+              <fieldset class="filter-form__group">
+                <legend>Тип комнаты</legend>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-kitchen" value="kitchen" checked>
+                  <label for="room-kitchen">Кухня и столовая</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-bathroom" value="bathroom" checked>
+                  <label for="room-bathroom">Ванная комната</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-kids" value="kids">
+                  <label for="room-kids">Детская комната</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-office" value="office">
+                  <label for="room-office">Домашний офис</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-living" value="living">
+                  <label for="room-living">Гостиная</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-hall" value="hall">
+                  <label for="room-hall">Прихожая</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-bedroom" value="bedroom">
+                  <label for="room-bedroom">Спальня</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-wardrobe" value="wardrobe">
+                  <label for="room-wardrobe">Гардероб</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-dacha" value="dacha">
+                  <label for="room-dacha">Дача</label>
+                </div>
+                <div class="option">
+                  <input type="checkbox" name="room" id="room-light" value="light">
+                  <label for="room-light">Свет</label>
+                </div>
+              </fieldset>
+
+              <button class="filter-form__submit" type="submit">Применить</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <select class="sort" name="sort" form="filter-form" aria-label="Сортировка">
+        <option value="popular">По популярности</option>
+        <option value="new">Сначала новые</option>
+        <option value="old">Сначала старые</option>
+      </select>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
