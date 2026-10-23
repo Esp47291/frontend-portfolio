@@ -1,0 +1,64 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <img src="logo.svg" class="header__logo">
+        <input type="text" class="header__search">
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="catalog.html" class="header__nav-link">каталог</a></li>
+                <li class="header__nav-item"><a href="shopingcart" class="header__nav-link">корзина</a></li>
+            </ul>    
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1 class="hero__title">Все, чего заслуживает ваш дом</h1>
+        <p class="hero__description">Наша мебель — ваше отражение</p>
+        <a href="catalog.html" class="hero__link">Перейти в каталог</a>
+    </section>
+    
+    <section class="offers">
+        <h2 class="offers__title">Специальные предложения</h2>
+        <div class="product">
+            <img src="product1.jpg" class="product__image">
+            <h3 class="product__name">Кресло VILORA</h3>
+            <p class="product__description">Мягкое и уютное, аккуратное и стильное. Упругие подушки сиденья и приятная на ощупь ткань</p> 
+            <div class="product__prices">
+                <p class="product__price product__price--new">21 000</p>
+                <p class="product__price product__price--old">28 000</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <h4 class="footer__title">Меню и контакты</h4>
+        <ul class="footer__menu">
+            <li class="footer__menu-item"><a href="index.html" class="footer__link">главная</a></li>
+            <li class="footer__menu-item"><a href="catalog.html" class="footer__link">каталог</a></li>
+            <li class="footer__menu-item"><a href="shopingcart" class="footer__link">корзина</a></li>
+        </ul>
+        <div class="footer__contacts">
+            <a href="number" class="footer__link">+7 908 800 80 80</a>
+            <a href="mail" class="footer__link">help@interier.com</a>
+        </div>
+        <div class="footer__social">
+            <a href="vk.com" class="footer__social-link"><img src="vk.svg" class="footer__social-icon"></a>
+            <a href="telegram.org" class="footer__social-link"><img src="telegram.svg" class="footer__social-icon"></a>
+            <a href="dzen.ru" class="footer__social-link"><img src="dzen.svg" class="footer__social-icon"></a>
+        </div>
+        <form class="footer__subscribe">
+            <p class="footer__subscribe-text">Получайте наши новости и обновления</p>
+            <input type="email" class="footer__subscribe-input">
+            <button class="footer__subscribe-button">подписаться</button>
+        </form>  
+    </footer>
+</body>
+</html>
