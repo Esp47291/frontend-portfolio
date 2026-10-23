@@ -1,0 +1,132 @@
+/*style.css*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 76px;
+}
+
+.header-nav-link {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.header-nav-link:hover{
+    text-decoration: underline;
+}
+
+.main-title {
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 70px;
+    margin-top: 64px;
+    margin-bottom: 16px;
+
+}
+
+.main-par {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 16px;
+}
+
+.section-catalog-link {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.section-catalog-link:hover {
+    text-decoration: underline;
+}
+
+.special-offers {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 59px;
+    color: #000000; 
+    margin-bottom: 32px; 
+}
+
+.chair {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+.descripton {
+    font-size: 14px;
+    line-height: 17px;
+    color: #888888;
+    margin-bottom: 12px;
+}
+
+.new-price {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #050505;
+}
+
+.old-price {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-decoration-line: line-through;
+    color: #888888;
+}
+
+.footer-h4 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+.footer-links {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #888888;
+    text-decoration: none;
+}
+
+.footer-links:hover {
+    text-decoration: underline;
+    color: #565656;
+}
+
+.form-p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+    margin-bottom: 100px;
+}
+
+.form-input-email{
+    background: #ffffff;
+    border: 1px solid #c4c4c4;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+    color: #c4c4c4;
+}
+
+.form-button{
+    background: rgba(222, 215, 215, 0.41);
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 275px;
+    height: 46px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #000000;
+}
