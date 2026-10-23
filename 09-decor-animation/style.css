@@ -1,0 +1,117 @@
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+
+    50% {
+        transform: translateX(100px);
+    }
+
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+section {
+    padding-bottom: 100px;
+}
+
+
+.hover-focus:hover {
+    color:chartreuse; 
+}
+
+
+.hover-focus:focus {
+    color: aquamarine;
+}
+
+
+.hover-focus::before {
+    content: '👌';
+}
+
+
+.hover-focus::after {
+    content: '😎';
+}
+
+
+.ull:nth-child(2n) {
+    color: aqua;
+}
+
+
+div:empty {
+   border: 1px solid red;
+}
+
+
+.ull:not(:first-child) {
+    color: burlywood;
+}
+
+
+.but {
+    background-color: yellowgreen;
+}
+
+
+.but:hover {
+    background-color: blueviolet;
+}
+
+
+.item1:hover {
+    transform: rotate(15deg);
+}
+
+
+.item2:hover {
+    transform: scale(0.7);
+}
+
+
+.item3:hover {
+    transform: translate(100px, -40px);
+}
+
+
+.item4:hover {
+    transform: skew(-45deg);
+}
+
+
+.qwe {
+    width: 100px;
+    height: 20px;
+    background-color: antiquewhite;
+    animation: moveRight 2s infinite;
+}
+
+
+.www1 {
+    position: static;
+    z-index: 1;
+}
+
+
+.www2 {
+    position: absolute;
+    z-index: 2;
+}
+
+
+.www3 {
+    position: relative;
+    z-index: 1;
+}
+
+
+.www4 {
+    position: fixed;
+    z-index: 2;
+}
