@@ -1,0 +1,112 @@
+.cart {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 32px;
+    margin-top: 64px; 
+
+    &__form {
+        background: #F7F6F6;
+        border-radius: 20px;
+        grid-column: span 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 64;
+        padding: 42px 30px 42px 30px;
+
+        &-h3 {
+            margin-bottom: 20px;
+        }
+
+        &-input {
+            border-bottom: #000000;
+            padding-bottom: 3px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        &-h4 {
+            margin-top: 40px;
+            color: rgba(0, 0, 0, 1);
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: center;
+        }
+
+        &-button {
+            width: 319px;
+            height: 45px;
+            border-radius: 50px;
+            background-color: transparent;
+            outline: none;
+            font-size: 16px;
+            line-height: 19.5px;
+            box-sizing: border-box;
+            margin-top: 18px;
+        }
+    }
+
+    &__content {
+        grid-column: span 8;
+    }
+
+    &__name-box {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 14px;
+    }
+
+    &__item {
+        border-top: 1px solid #CACDD8;
+        padding-top: 25px;
+        padding-bottom: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__button {
+        width: 200px;
+        height: 45px;
+        border-radius: 50px;
+        background-color: transparent;
+        outline: none;
+        font-size: 16px;
+        line-height: 19.5px;
+        box-sizing: border-box;
+        margin-top: 18px;
+    }
+
+    &__left {
+        display: flex;
+        gap: 32px;
+    }
+
+    &__info {
+        width: 276px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__link-box {
+        text-decoration: underline;
+        &-links {
+            color: #000000;
+        }
+    }
+
+    &__num {
+        width: 71px;
+        height: 51px;
+        border-radius: 6px;
+        background: rgba(247, 246, 246, 1);
+        border: #F7F6F6;
+        padding-left: 24px;
+    }
+}

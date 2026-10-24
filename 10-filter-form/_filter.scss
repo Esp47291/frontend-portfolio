@@ -1,0 +1,426 @@
+// =====================================================
+// Блок фильтрации каталога (размеры и цвета — по макету)
+// =====================================================
+
+$filter-text: #000000;
+$filter-border: #c4c4c4;    // рамки кнопок «Фильтрация» и сортировки
+$filter-control: #888888;   // рамки невыбранных радиокнопок и чекбоксов
+$filter-box: 17px;          // размер радиокнопки / чекбокса / цветного квадрата
+$filter-step: 31px;         // шаг между строками списка
+
+// Цвета из макета: имя модификатора => цвет
+$filter-colors: (
+  "white": #ffffff,
+  "black": #000000,
+  "gray": #737373,
+  "red": #ff0000,
+  "orange": #ff7a41,
+  "yellow": #f2cb01,
+  "green": #00bf2a,
+  "turquoise": #1ccc97,
+  "light-blue": #009fe3,
+  "blue": #000af8,
+  "violet": #6710d6,
+  "purple": #9d0db5,
+  "lilac": #d89aff,
+  "pink": #ff65a6
+);
+
+// Галочка из макета (чёрная и белая — для тёмных цветов)
+$check-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath d='M0.8 4.1 3.1 6.5 7.2 1.2' fill='none' stroke='%23000' stroke-width='1.1'/%3E%3C/svg%3E");
+$check-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath d='M0.8 4.1 3.1 6.5 7.2 1.2' fill='none' stroke='%23fff' stroke-width='1.1'/%3E%3C/svg%3E");
+$arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='17' height='8' viewBox='0 0 17 8'%3E%3Cpath d='M0 0h17L8.5 8z'/%3E%3C/svg%3E");
+
+// ---------- панель с кнопками над каталогом ----------
+.navigation-cat {
+  display: flex;
+  align-items: center;
+}
+
+.navigation-cat__controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+
+  // сортировка — того же размера, что и в макете
+  .select-css2-cat {
+    width: 229px;
+    height: 42px;
+    padding-left: 24px;
+    color: $filter-text;
+    border-color: $filter-border;
+    border-radius: 21px;
+    background-size: 17px 8px;
+    background-position: calc(100% - 24px) center;
+    cursor: pointer;
+  }
+}
+
+// ---------- блок фильтра ----------
+// Относительное позиционирование: форма внутри блока
+// позиционируется абсолютно относительно кнопки «Фильтрация»
+.filter {
+  position: relative;
+}
+
+.filter__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 184px;
+  height: 42px;
+  padding: 0 24px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: $filter-text;
+  background-color: #ffffff;
+  border: 1px solid $filter-border;
+  border-radius: 21px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    width: 17px;
+    height: 8px;
+    background: $arrow no-repeat center / contain;
+    transition: transform 0.2s;
+  }
+}
+
+.filter_closed .filter__toggle::after {
+  transform: rotate(180deg);
+}
+
+.filter__form {
+  position: absolute;
+  top: calc(100% + 13px);
+  right: 0;
+  z-index: 10;
+  width: 526px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.filter_closed .filter__form {
+  display: none;
+}
+
+.filter__content {
+  display: grid;
+  grid-template-columns: 191px 192px;
+  column-gap: 63px;
+  padding: 40px 39px 39px 40px;
+}
+
+.filter__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter__group {
+  min-width: 0;
+  margin: 0 0 32px;
+  padding: 0;
+  border: none;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.filter__legend {
+  padding: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $filter-text;
+}
+
+// ---------- радиокнопки и чекбоксы ----------
+.filter__option {
+  display: flex;
+  align-items: center;
+
+  & + & {
+    margin-top: $filter-step - $filter-box;
+  }
+}
+
+.filter__input {
+  display: none;
+}
+
+.filter__label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: $filter-box;
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 17px;
+  color: $filter-text;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $filter-box;
+    height: $filter-box;
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $filter-control;
+  }
+
+  &:hover::before {
+    border-color: $filter-text;
+  }
+}
+
+.filter__label_type_radio::before {
+  border-radius: 50%;
+}
+
+// активное состояние: чёрная рамка + галочка
+.filter__input:checked + .filter__label::before {
+  border-color: $filter-text;
+  background-image: $check-black;
+}
+
+// ---------- цвета ----------
+.filter__colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 191px;
+  margin-top: -3px;
+}
+
+.filter__option_type_color + .filter__option_type_color {
+  margin-top: 0;
+}
+
+.filter__label_type_color {
+  width: $filter-box;
+  padding-left: 0;
+}
+
+// Для каждого цвета — свой класс с цветом фона и рамки
+@each $name, $color in $filter-colors {
+  .filter__label_color_#{$name}::before {
+    background-color: $color;
+    border-color: $color;
+  }
+
+  .filter__input:checked + .filter__label_color_#{$name}::before {
+    background-color: $color;
+    border-color: $filter-text;
+  }
+}
+
+// у белого квадрата видимая серая рамка
+.filter__label_color_white::before {
+  border-color: $filter-control;
+}
+
+// на тёмных цветах галочка белая, чтобы её было видно
+.filter__input:checked + .filter__label_color_black::before,
+.filter__input:checked + .filter__label_color_blue::before,
+.filter__input:checked + .filter__label_color_violet::before,
+.filter__input:checked + .filter__label_color_purple::before {
+  background-image: $check-white;
+}
+
+.filter__color-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// ---------- цена ----------
+.filter__price {
+  display: flex;
+  gap: 15px;
+  margin: -3px 0 15px;
+  font-size: 14px;
+  line-height: 17px;
+  color: $filter-text;
+}
+
+.filter__range {
+  position: relative;
+  width: 190px;
+  height: 8px;
+}
+
+.filter__range-track,
+.filter__range-fill {
+  position: absolute;
+  top: 3.5px;
+  height: 1px;
+}
+
+.filter__range-track {
+  left: 0;
+  right: 0;
+  background-color: $filter-border;
+}
+
+.filter__range-fill {
+  left: 0;
+  right: 0;
+  background-color: $filter-text;
+}
+
+.filter__range-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &::-webkit-slider-runnable-track {
+    height: 8px;
+    background: transparent;
+    -webkit-appearance: none;
+  }
+
+  &::-moz-range-track {
+    height: 8px;
+    background: transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    width: 8px;
+    height: 8px;
+    background-color: $filter-text;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-appearance: none;
+  }
+
+  &::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background-color: $filter-text;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+}
+
+// ---------- кнопка «Применить» ----------
+.filter__submit {
+  width: 192px;
+  height: 42px;
+  margin-top: 95px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: $filter-text;
+  background-color: #ffffff;
+  border: 1px solid $filter-text;
+  border-radius: 21px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+// ---------- планшет ----------
+@media (max-width: 1199px) {
+  .navigation-cat {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .navigation-cat__controls {
+    position: relative;
+  }
+
+  // окно выравнивается по правому краю обеих кнопок
+  .filter {
+    position: static;
+  }
+
+  .filter__form {
+    width: 542px;
+  }
+
+  .filter__content {
+    column-gap: 64px;
+    padding: 40px 46px 39px 48px;
+  }
+}
+
+// ---------- мобильная версия ----------
+@media (max-width: 767px) {
+  .navigation-cat {
+    padding-left: 16px;
+    padding-right: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .navigation-cat__controls {
+    position: static;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    margin-left: 0;
+  }
+
+  .filter {
+    position: relative;
+  }
+
+  .filter__toggle {
+    width: 166px;
+    height: 43px;
+    padding: 0 20px;
+    font-size: 14px;
+  }
+
+  .navigation-cat__controls .select-css2-cat {
+    width: 205px;
+    height: 43px;
+    padding-left: 20px;
+    font-size: 14px;
+    background-position: calc(100% - 20px) center;
+  }
+
+  .filter__form {
+    left: 1px;
+    right: auto;
+    width: 287px;
+  }
+
+  .filter__content {
+    grid-template-columns: 1fr;
+    padding: 40px 48px 39px;
+  }
+
+  .filter__column:first-child .filter__group:last-of-type {
+    margin-bottom: 31px;
+  }
+
+  .filter__submit {
+    margin-top: 33px;
+  }
+}
